@@ -1,19 +1,20 @@
 define(
-  ['jquery', 'app/helpers/math_helper', 'app/helpers/json_validator'],
-function($, MathHelper, JsonValidator) {
+  ['jquery', 'app/data/image_cache'],
+function($, ImageCache) {
 
     $(document).ready(function(){
-      console.log("The DOM has loaded!");
-      console.log("Here's a random number between 1 and 10: " + MathHelper.getRandomNumber(1, 10));
-
-      var validJson = '{"key" : "value"}';
-      var invalidJson = '{"key" !!! "value"}';
-
-      console.log("Here's the valid JSON: " + validJson);
-      console.log("Valid? " + JsonValidator.isValidJson(validJson));
-      console.log("Here's the invalid JSON: " + invalidJson);
-      console.log("Valid? " + JsonValidator.isValidJson(invalidJson));
+      //Pre-load horse image so we can access it at any time
+      ImageCache.horseImage = new Image;
+      ImageCache.horseImage.onload = function(){
+        //Start app AFTER horse image has loaded
+        setupWidgets();
+      };
+      ImageCache.horseImage.src = 'img/horse.png';
     });
+
+    function setupWidgets() {
+      console.log("setup was called!");
+    }
 
   }
 );
