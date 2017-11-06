@@ -1,6 +1,6 @@
 define(
-  ['jquery', 'app/data/image_cache'],
-function($, ImageCache) {
+  ['jquery', 'app/data/image_cache', 'app/widgets/race_setup_tool'],
+function($, ImageCache, RaceSetupTool) {
 
     $(document).ready(function(){
       //Pre-load horse image so we can access it at any time
@@ -13,7 +13,7 @@ function($, ImageCache) {
     });
 
     function setupWidgets() {
-      console.log("setup was called!");
+      var raceSetupTool = new RaceSetupTool('race-setup-tool', $('#right-toolbar-container'), 7);
     }
 
   }
