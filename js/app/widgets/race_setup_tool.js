@@ -16,18 +16,34 @@ function($, JsonValidator) {
   "Landbiscuit",
   "Mister Ed"
 ]</textarea>
+      <button type="button" class="btn btn-outline-primary start-race-button">Start Race</button>
     </div>
     `);
 
     //Add new element to parentElement
     $(parentElement).append(this.$el);
 
-    // Bind keyup listener to textarea so we can validate json as we type
+    // Bind click listener to start-race button
     $('#' + elementId).find('textarea').on('keyup', this.validate.bind(this));
+
+    // Bind keyup listener to textarea so we can validate json as we type
+    $('#' + elementId).find('.start-race-button').on('click', function(){
+      if(this.textareaValueIsValid()) {
+        this.onStartRace(JSON.parse(this.getTextareaValue()));
+      } else {
+        alert("Please correct your JSON before starting the race.  Must be an array of string values.");
+      }
+    }.bind(this));
 
     //Manually call validate() once to set proper initial highlight
     this.validate();
   }
+
+  /**
+   * This function does nothing by default, and can be overridden. It will
+   * fire whenever the race data has been updated after a simulation tick.
+   */
+  RaceSetupTool.prototype.onStartRace = function(racerNames) {}
 
   RaceSetupTool.prototype.textareaValueIsValid = function() {
     var textAreaValue = this.getTextareaValue();
