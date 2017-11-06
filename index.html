@@ -24,7 +24,11 @@
       <div id="canvas-container"></div>
     </div>
 
-    <!-- data-main attribute tells require.js to load scripts/main.js after require.js loads. -->
-    <script data-main="js/application.js" src="js/lib/require.js"></script>
+    <!--  jQuery isn't written to be exported as an ES5 module, so unfortunately
+          need to load it globablly
+    -->
+    <script src="js/lib/jquery.min.js"></script>
+
+    <script type="module" src="js/app/main.js"></script>
   </body>
 </html>

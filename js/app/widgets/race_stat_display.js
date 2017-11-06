@@ -1,8 +1,6 @@
-define(
-  ['jquery'],
-function($) {
+export default class RaceStatDisplay {
 
-  function RaceStatDisplay(elementId, parentElement, numTextareaRows) {
+  constructor(elementId, parentElement, numTextareaRows) {
     //Create new html element for this widget
     this.$el = $('<div class="race-data-display sidebar-widget"></div>');
     this.$el.attr('id', elementId);
@@ -26,7 +24,7 @@ function($) {
     $(parentElement).append(this.$el);
   }
 
-  RaceStatDisplay.prototype.updateData = function(racerData) {
+  updateData(racerData) {
     var $racerDataTableBody = this.$el.find('table.racer-data tbody');
     $racerDataTableBody.html(
       `<tr>
@@ -49,8 +47,6 @@ function($) {
         </tr>`
       );
     }
-
   }
 
-  return RaceStatDisplay;
-});
+}

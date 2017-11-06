@@ -1,3 +1,6 @@
+//Not used in ES6-module-based app
+
+/*
 requirejs.config({
     // By default, load any module IDs from js/lib
     baseUrl: 'js/lib',
@@ -16,9 +19,9 @@ requirejs.config({
 // your application logic in there.
 requirejs(['app/main']);
 
-// Set jQuery to noconflict mode so that we make sure to only
-// use it as a require import, and not automatically have it
-// available globally.
+// and the 'jquery-private' module, in the
+// jquery-private.js file:
 define(['jquery'], function (jq) {
     return jq.noConflict( true );
 });
+*/

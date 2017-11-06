@@ -1,18 +1,13 @@
-define(function() {
+export default function JsonValidator() {}
 
-  function JsonValidator() {}
-
-  /**
-   * Returns true if the given JSON string str is valid JSON
-   */
-  JsonValidator.isValidJson = function(str) {
-    try {
-        JSON.parse(str);
-    } catch (e) {
-        return false;
-    }
-    return true;
+/**
+ * Returns true if the given JSON string str is valid JSON
+ */
+JsonValidator.isValidJson = function(str) {
+  try {
+      JSON.parse(str);
+  } catch (e) {
+      return false;
   }
-
-  return JsonValidator;
-});
+  return true;
+}
