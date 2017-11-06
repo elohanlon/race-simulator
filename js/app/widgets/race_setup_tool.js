@@ -23,10 +23,10 @@ function($, JsonValidator) {
     //Add new element to parentElement
     $(parentElement).append(this.$el);
 
-    // Bind keyup listener to textarea so we can validate json as we type
+    // Bind click listener to start-race button
     $('#' + elementId).find('textarea').on('keyup', this.validate.bind(this));
 
-    // Bind click listener to start-race button
+    // Bind keyup listener to textarea so we can validate json as we type
     $('#' + elementId).find('.start-race-button').on('click', function(){
       if(this.textareaValueIsValid()) {
         this.onStartRace(JSON.parse(this.getTextareaValue()));
